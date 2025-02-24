@@ -1,0 +1,21 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AuthAdmin; // Ensure this middleware exists
+
+Auth::routes();
+
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
+});
+
+Route::middleware(['auth', AuthAdmin::class])->group(function () {
+    Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.manage.users');
+});
