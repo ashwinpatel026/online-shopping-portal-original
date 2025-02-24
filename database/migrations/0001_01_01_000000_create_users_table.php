@@ -18,6 +18,15 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('utype')->default('USR')->comment('ADM for admin and USR for user or customer');
+            $table->string('contact_no')->nullable();
+            $table->text('shipping_address')->nullable();
+            $table->string('shipping_state')->nullable();
+            $table->string('shipping_city')->nullable();
+            $table->string('shipping_pincode')->nullable();
+            $table->text('billing_address')->nullable();
+            $table->string('billing_state')->nullable();
+            $table->string('billing_city')->nullable();
+            $table->string('billing_pincode')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

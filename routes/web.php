@@ -12,6 +12,8 @@ use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\CartController;
 use App\Http\Middleware\AuthAdmin; // Ensure this middleware exists
 use App\Http\Controllers\Frontend\CategoryFrontController;
+use App\Http\Controllers\CheckoutController;
+
 
 Auth::routes();
 
@@ -29,6 +31,9 @@ Route::delete('/cart/remove/{rowId}', [CartController::class, 'remove_from_cart'
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
+
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout/place-order', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
 });
 
 Route::middleware(['auth', AuthAdmin::class])->group(function () {

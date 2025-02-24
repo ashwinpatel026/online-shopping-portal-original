@@ -63,7 +63,6 @@ class CategoryController extends AdminController
         // Validate the request
         $request->validate([
             'category_name' => 'required|string|max:255',
-            'category_description' => 'nullable|string',
         ]);
 
         // Find the category by ID
