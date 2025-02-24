@@ -112,26 +112,24 @@
                                         href="{{ route('home.index') }}">Home</a>
 
                                 </li>
+                                @if($categories)
+                                    @foreach($categories as $category) 
+                                        <li class="dropdown yamm">
+                                            <a href="{{ route('category.show', ['categoryId' => $category->id]) }}"> {{ $category->category_name }}</a>
+        
+                                        </li>
+                                    @endforeach
+                                @endif
+                                        
+                                {{-- @if($categories)
+                                    @foreach($categories as $category) 
+                                        <li class="dropdown yamm">
+                                            <a href="{{ route('category.show', ['categoryId' => $category->id]) }}"> {{ $category->cateogry_name }}</a>
+        
+                                        </li>
+                                    @endforeach
+                                @endif --}}
 
-                                <li class="dropdown yamm">
-                                    <a href="category.php?cid=3"> Books</a>
-
-                                </li>
-
-                                <li class="dropdown yamm">
-                                    <a href="category.php?cid=4"> Electronics</a>
-
-                                </li>
-
-                                <li class="dropdown yamm">
-                                    <a href="category.php?cid=5"> Furniture</a>
-
-                                </li>
-
-                                <li class="dropdown yamm">
-                                    <a href="category.php?cid=6"> Fashion</a>
-
-                                </li>
 
                                 <li class="dropdown yamm">
                                     @auth

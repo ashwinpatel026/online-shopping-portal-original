@@ -4,7 +4,7 @@
 
 <body class="cnt-home">
     <header class="header-style-1">
-        <x-header />
+        <x-header :categories="$categories" />
     </header>
 
     @yield('content')

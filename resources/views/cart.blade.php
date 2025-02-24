@@ -90,8 +90,7 @@
                                     <td colspan="7">
                                         <div class="shopping-cart-btn">
                                             <span class="">
-                                                <a href="index.php" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
-                                                <input type="submit" name="submit" value="Update shopping cart" class="btn btn-upper btn-primary pull-right outer-right-xs">
+                                                <a href="{{route('home.index')}}" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
                                             </span>
                                         </div><!-- /.shopping-cart-btn -->
                                     </td>

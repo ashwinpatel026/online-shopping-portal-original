@@ -8,12 +8,17 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\CartController;
 use App\Http\Middleware\AuthAdmin; // Ensure this middleware exists
+use App\Http\Controllers\Frontend\CategoryFrontController;
 
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/category/{categoryId}', [CategoryFrontController::class, 'show'])->name('category.show');
+Route::get('/product-details/{id}', [ProductDetailsController::class, 'show'])->name('product.show');
+
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add', [CartController::class, 'add_to_cart'])->name('cart.add');

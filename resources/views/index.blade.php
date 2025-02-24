@@ -13,11 +13,18 @@
                             <nav class="yamm megamenu-horizontal" role="navigation">
 
                                 <ul class="nav">
+                                    
+                                    
                                     <li class="dropdown menu-item">
-                                        <a class="dropdown-toggle" href="category.php?cid=3"><i
-                                                class="icon fa fa-desktop fa-fw"></i>
-                                            Books</a>
-                                        <a class="dropdown-toggle" href="category.php?cid=4"><i
+                                        @if (isset($categories))
+                                            @foreach ($categories as $cat )
+                                                <a class="dropdown-toggle" href="{{ route('category.show', ['categoryId' => $cat->id]) }}">
+                                                    <i class="icon fa fa-desktop fa-fw"></i>
+                                                    {{ $cat->category_name }}</a>
+                                            @endforeach
+                                        @endif
+                                        
+                                        {{-- <a class="dropdown-toggle" href="category.php?cid=4"><i
                                                 class="icon fa fa-desktop fa-fw"></i>
                                             Electronics</a>
                                         <a class="dropdown-toggle" href="category.php?cid=5"><i
@@ -25,7 +32,7 @@
                                             Furniture</a>
                                         <a class="dropdown-toggle" href="category.php?cid=6"><i
                                                 class="icon fa fa-desktop fa-fw"></i>
-                                            Fashion</a>
+                                            Fashion</a> --}}
 
                                     </li>
                                 </ul>
@@ -124,7 +131,7 @@
                                             <div class="product-image">
                                                 <div class="image">
                                                     <a
-                                                        href="product-details.php?pid=<?php echo 'product-details.php?pid=1'; ?>">
+                                                        href="{{ route('product.show', $product->id) }}">
                                                         <img src="{{ asset('products/'.$product->product_image1) }}"
                                                             data-echo="{{ asset('products/'.$product->product_image1) }}" width="180" height="300"
                                                             alt="{{ $product->product_name }}"></a>
@@ -132,7 +139,7 @@
                                             </div><!-- /.product-image -->
                                             <div class="product-info text-left">
                                                 <h3 class="name">
-                                                    <a href="{{ url('product-details?pid=' . $product->id) }}">
+                                                    <a href="{{ route('product.show', $product->id) }}">
                                                         {{ $product->product_name }}
                                                     </a>
                                                 </h3>
@@ -151,7 +158,7 @@
                                                     <input type="hidden" name="product_name" value="{{ $product->product_name }}">
                                                     <input type="hidden" name="price" value="{{ $product->sale_price > 0 ? $product->sale_price : $product->price }}">
                                                     <input type="hidden" name="quantity" value="1">
-                                                    <button type="submit" class="add-to-cart-mt">Add to Cart</button>
+                                                    <button type="submit" class="add-to-cart-mt lnk btn btn-info">Add to Cart</button>
                                                 </form>
                                             </div>
                                         </div>
