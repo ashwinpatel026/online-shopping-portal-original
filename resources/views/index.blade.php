@@ -116,7 +116,7 @@
                         <div class="tab-pane in active" id="all">
                             <div class="product-slider">
                                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme">
-                                    {{-- @foreach ($products as $product)
+                                    @foreach ($products as $product)
                                 <div class="item">
                                     <!-- start product -->
                                     <div class="products">
@@ -125,15 +125,15 @@
                                                 <div class="image">
                                                     <a
                                                         href="product-details.php?pid=<?php echo 'product-details.php?pid=1'; ?>">
-                                                        <img src="{{ $product->image }}"
-                                                            data-echo="{{ $product->image }}" width="180" height="300"
-                                                            alt="{{ $product->name }}"></a>
+                                                        <img src="{{ asset('products/'.$product->product_image1) }}"
+                                                            data-echo="{{ asset('products/'.$product->product_image1) }}" width="180" height="300"
+                                                            alt="{{ $product->product_name }}"></a>
                                                 </div><!-- /.image -->
                                             </div><!-- /.product-image -->
                                             <div class="product-info text-left">
                                                 <h3 class="name">
                                                     <a href="{{ url('product-details?pid=' . $product->id) }}">
-                                                        {{ $product->name }}
+                                                        {{ $product->product_name }}
                                                     </a>
                                                 </h3>
                                                 <div class="rating rateit-small"></div>
@@ -141,19 +141,25 @@
                                                 <div class="product-price">
                                                     <span class="price">{{ number_format($product->price, 2) }} </span>
                                                     <span
-                                                        class="price-before-discount">Rs.{{ number_format($product->old_price, 2) }}</span>
+                                                        class="price-before-discount">Rs.{{ number_format($product->sale_price, 2) }}</span>
                                                 </div><!-- /.product-price -->
                                             </div><!-- /.product-info -->
-                                            <div class="action"><a
-                                                    href="{{ url('index?page=product&action=add&id=' . $product->id) }}"
-                                                    class="lnk btn btn-info">Add to Cart</a>
+                                            <div class="action">
+                                                <form action="{{ route('cart.add') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="product_name" value="{{ $product->product_name }}">
+                                                    <input type="hidden" name="price" value="{{ $product->sale_price > 0 ? $product->sale_price : $product->price }}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <button type="submit" class="add-to-cart-mt">Add to Cart</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- end product -->
                                 </div><!-- /.item -->
-                                @endforeach --}}
-                                    <div class="item">
+                                @endforeach
+                                    {{-- <div class="item">
                                         <!-- start product -->
                                         <div class="products">
                                             <div class="product">
@@ -184,7 +190,7 @@
                                             </div>
                                         </div>
                                         <!-- end product -->
-                                    </div><!-- /.item -->
+                                    </div><!-- /.item --> --}}
 
                                 </div><!-- /.home-owl-carousel -->
                             </div><!-- /.product-slider -->

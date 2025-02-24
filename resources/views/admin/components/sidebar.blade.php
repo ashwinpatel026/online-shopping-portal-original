@@ -35,7 +35,7 @@
         </li>
 
         <li>
-            <a href="manage-users.php">
+            <a href="{{ route('admin.users') }}">
                 <i class="menu-icon icon-group"></i>
                 Manage users
             </a>
@@ -44,22 +44,33 @@
 
 
     <ul class="widget widget-menu unstyled">
-        <li><a href="category.php"><i class="menu-icon icon-tasks"></i> Create Category </a></li>
-        <li><a href="subcategory.php"><i class="menu-icon icon-tasks"></i>Sub Category </a></li>
-        <li><a href="insert-product.php"><i class="menu-icon icon-paste"></i>Insert Product </a></li>
-        <li><a href="manage-products.php"><i class="menu-icon icon-table"></i>Manage Products </a></li>
+        <li><a href="{{route('categories.index')}}"><i class="menu-icon icon-tasks"></i> Manage Category </a></li>
+        <li><a href="{{route('subcategories.index')}}"><i class="menu-icon icon-tasks"></i>Manage Sub Category </a></li>
+        <li><a href="{{route('products.index')}}"><i class="menu-icon icon-table"></i>Manage Products </a></li>
+        <li><a href="{{route('products.create') }}"><i class="menu-icon icon-paste"></i>Insert Product </a></li>
 
-    </ul><!--/.widget-nav-->
+    </ul>
+    <!--/.widget-nav-->
 
     <ul class="widget widget-menu unstyled">
-        <li><a href="user-logs.php"><i class="menu-icon icon-tasks"></i>User Login Log </a></li>
+        <li><a href="#"><i class="menu-icon icon-tasks"></i>User Login Log </a></li>
 
-        <li>
+        {{-- <li>
             <a href="logout.php">
                 <i class="menu-icon icon-signout"></i>
                 Logout
             </a>
+        </li> --}}
+        <li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <a href="javascript:void(0)" onclick="this.closest('form').submit()">
+                    <i class="menu-icon icon-signout"></i> Logout
+                </a>
+            </form>
         </li>
+        
     </ul>
 
-</div><!--/.sidebar-->
+</div>
+<!--/.sidebar-->

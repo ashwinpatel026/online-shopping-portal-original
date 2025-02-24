@@ -62,116 +62,27 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-3 animate-dropdown top-cart-row">
                     <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
-                    <div class="dropdown dropdown-cart">
-                        <a class="dropdown-toggle lnk-cart" data-toggle="dropdown" href="#">
+                    <div class="dropdown-cart">
+                        <a href="{{route('cart.index')}}" class="lnk-cart">
                             <div class="items-cart-inner">
                                 <div class="total-price-basket">
                                     <span class="lbl">cart -</span>
                                     <span class="total-price">
                                         <span class="sign">Rs.</span>
-                                        <span class="value">350556.00</span>
+                                        <span class="value">{{Cart::instance('cart')->subtotal() }}</span>
                                     </span>
                                 </div>
                                 <div class="basket">
                                     <i class="glyphicon glyphicon-shopping-cart"></i>
                                 </div>
-                                <div class="basket-item-count"><span class="count">4</span></div>
-
+                                @if(Cart::instance('cart')->count() > 0) 
+                                    <div class="basket-item-count"><span class="count">{{Cart::instance('cart')->count()}}</span></div>
+                                @else
+                                    <div class="basket-item-count"><span class="count">0</span></div>
+                                @endif
                             </div>
                         </a>
-                        <ul class="dropdown-menu">
-
-
-
-                            <li>
-                                <div class="cart-item product-summary">
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <div class="image">
-                                                <a href="product-details.php?pid=1"><img
-                                                        src="admin/productimages/1/micromax1.jpeg" alt=""
-                                                        width="35" height="50"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-7">
-
-                                            <h3 class="name"><a href="product-details.php?pid=1">Micromax 81cm (32) HD
-                                                    Ready LED TV (32T6175MHD, 2 x HDMI, 2 x USB)</a></h3>
-                                            <div class="price">Rs.141100*2</div>
-                                        </div>
-
-                                    </div>
-                                </div><!-- /.cart-item -->
-
-
-
-                            <li>
-                                <div class="cart-item product-summary">
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <div class="image">
-                                                <a href="product-details.php?pid=2"><img
-                                                        src="admin/productimages/2/apple-iphone-6-1.jpeg" alt=""
-                                                        width="35" height="50"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-7">
-
-                                            <h3 class="name"><a href="product-details.php?pid=2">Apple iPhone 6
-                                                    (Silver,
-                                                    16 GB)</a></h3>
-                                            <div class="price">Rs.36990*1</div>
-                                        </div>
-
-                                    </div>
-                                </div><!-- /.cart-item -->
-
-
-
-                            <li>
-                                <div class="cart-item product-summary">
-                                    <div class="row">
-                                        <div class="col-xs-4">
-                                            <div class="image">
-                                                <a href="product-details.php?pid=17"><img
-                                                        src="admin/productimages/17/inaf245-queen-rosewood-sheesham-induscraft-na-honey-brown-original-1.jpeg"
-                                                        alt="" width="35" height="50"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-7">
-
-                                            <h3 class="name"><a href="product-details.php?pid=17">Induscraft Solid
-                                                    Wood
-                                                    King Bed With Storage</a></h3>
-                                            <div class="price">Rs.32566*1</div>
-                                        </div>
-
-                                    </div>
-                                </div><!-- /.cart-item -->
-
-                                <div class="clearfix"></div>
-                                <hr>
-
-                                <div class="clearfix cart-total">
-                                    <div class="pull-right">
-
-                                        <span class="text">Total :</span><span class='price'>Rs.350556.00</span>
-
-                                    </div>
-
-                                    <div class="clearfix"></div>
-
-                                    <a class="btn btn-upper btn-primary btn-block m-t-20" href="my-cart.php">My
-                                        Cart</a>
-                                </div><!-- /.cart-total-->
-
-
-                            </li>
-                        </ul><!-- /.dropdown-menu-->
-                    </div><!-- /.dropdown-cart -->
-
-
-
+                    </div>
 
                     <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
                 </div><!-- /.top-cart-row -->

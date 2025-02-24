@@ -5,7 +5,7 @@
                 <i class="icon-reorder shaded"></i>
             </a>
 
-            <a class="brand" href="#">
+            <a class="brand" href="{{ route('admin.index') }}">
                 Shopping Portal | Admin
             </a>
 
