@@ -1,4 +1,4 @@
-<footer id="footer" class="footer color-bg">
+<footer id="footer" class="footer color-bg m-t-20">
     <div class="links-social inner-top-sm">
         <div class="container">
             <div class="row">

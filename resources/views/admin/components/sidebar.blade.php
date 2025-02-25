@@ -10,21 +10,21 @@
             </a>
             <ul class="unstyled collapse" id="togglePages">
                 <li>
-                    <a href="todays-orders.php">
+                    <a href="{{route('admin.orders')}}">
                         <i class="icon-tasks"></i>
                         Today's Orders
                         <b class="label orange pull-right">0</b>
                     </a>
                 </li>
                 <li>
-                    <a href="pending-orders.php">
+                    <a href="{{route('admin.orders')}}">
                         <i class="icon-tasks"></i>
                         Pending Orders
                         <b class="label orange pull-right">0</b>
                     </a>
                 </li>
                 <li>
-                    <a href="delivered-orders.php">
+                    <a href="{{route('admin.orders')}}">
                         <i class="icon-inbox"></i>
                         Delivered Orders
                         <b class="label green pull-right">2</b>

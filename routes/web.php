@@ -8,14 +8,23 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\CartController;
 use App\Http\Middleware\AuthAdmin; // Ensure this middleware exists
 use App\Http\Controllers\Frontend\CategoryFrontController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Auth\AdminLoginController;
 
 
 Auth::routes();
+
+// Admin authentication routes
+Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminLoginController::class, 'login']);
+Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/category/{categoryId}', [CategoryFrontController::class, 'show'])->name('category.show');
@@ -45,5 +54,5 @@ Route::middleware(['auth', AuthAdmin::class])->group(function () {
     Route::resource('/admin/categories', CategoryController::class);
     Route::resource('/admin/subcategories', SubcategoryController::class);
     Route::resource('/admin/products', ProductController::class);
-
+    Route::get('/admin/orders', [OrderController::class, 'index'])->name('admin.orders');
 });

@@ -1,0 +1,35 @@
+=============== version needed =======================
+php version >= 8.2
+
+composer version 2.8
+
+
+================ installation =========================
+composer install
+
+npm install
+
+npm run build
+
+create mysql database name = online_shopping
+
+php artisan db:seed --class=UserSeeder
+
+php artisan db:seed --class=CategorySeeder
+
+php artisan db:seed --class=SubcategorySeeder
+
+php artisan db:seed --class=ProductSeeder
+
+php artisan serve
+
+============================ Frontend user =======================
+
+username = user@user.com
+password = 12345678
+
+============================ Backend user ========================
+
+username = admin@admin.com
+password = 12345678
+

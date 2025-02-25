@@ -137,7 +137,7 @@
                                         <a href="{{ Auth::user()->utype === 'ADM' ? route('admin.index') : route('user.index') }}"
                                             style="color:#000"> Dashboard</a>
                                     @else
-                                        <a href="{{ route('login') }}" style="color:#000"> Admin Login</a>
+                                        <a href="{{ route('admin.login') }}" target="_blank" style="color:#000"> Admin Login</a>
                                     @endauth
 
                                 </li>
