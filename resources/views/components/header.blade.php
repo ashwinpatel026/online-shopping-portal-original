@@ -6,24 +6,30 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
 
-                        <li> <a href="my-account.php"><i class="icon fa fa-user"></i>My Account</a></li>
-                        <li><a href="my-wishlist.php"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                        <li><a href="my-cart.php"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+                        <li> <a href="{{route('user.index')}}"><i class="icon fa fa-user"></i>My Account</a></li>
+                        <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+                        <li><a href="{{route('cart.index')}}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
                         @guest
                             <li><a href="{{ route('login') }}"><i class="icon fa fa-sign-in"></i>Login</a></li>
                         @endguest
-
+                        @auth
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <a href="javascript:void(0)" onclick="this.closest('form').submit()">
+                                        <i class="icon fa fa-sign-out"></i> Logout
+                                    </a>
+                                </form>
+                            </li>
+                        @endauth
                     </ul>
                 </div><!-- /.cnt-account -->
 
                 <div class="cnt-block">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small">
-                            <a class="dropdown-toggle" href="track-orders.php"><span class="key">Track Order</b></a>
-
+                            <a class="dropdown-toggle" href="{{route('user.orders')}}"><span class="key">Track Order</b></a>
                         </li>
-
-
                     </ul>
                 </div>
 
@@ -38,9 +44,7 @@
                     <!-- ============================================================= LOGO ============================================================= -->
                     <div class="logo">
                         <a href="{{ route('home.index') }}">
-
                             <h2>Shopping Portal</h2>
-
                         </a>
                     </div>
                 </div>
@@ -48,12 +52,9 @@
                     <div class="search-area">
                         <form name="search" method="post" action="search-result.php">
                             <div class="control-group">
-
                                 <input class="search-field" name="product" placeholder="Search here..."
                                     required="required" />
-
                                 <button class="search-button" name="search" type="submit"></button>
-
                             </div>
                         </form>
                     </div><!-- /.search-area -->

@@ -15,10 +15,10 @@
             @endif
 
             <!-- Add New Product Button -->
-            <a href="{{ route('products.create') }}" class="btn btn-success mb-3">Add Product</a>
+            {{-- <a href="{{ route('products.create') }}" class="btn btn-success mb-3">Add Product</a> --}}
 
             <!-- Product Table -->
-            <table class="table table-striped table-bordered">
+            <table class="datatable-1 table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -46,12 +46,12 @@
                             <td>${{ number_format($product->shipping_charge, 2) }}</td>
                             <td>{{ ucfirst($product->product_availability) }}</td>
                             <td>
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ route('products.edit', $product->id) }}"><i class="icon-edit"></i></a>
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');">
-                                        Delete
+                                    <button type="submit" style="border: none; background: none;">
+                                        <i class="icon-remove-sign text-danger"></i>
                                     </button>
                                 </form>
                             </td>
@@ -62,4 +62,15 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('.datatable-1').dataTable();
+        $('.dataTables_paginate').addClass("btn-group datatable-pagination");
+        $('.dataTables_paginate > a').wrapInner('<span />');
+        $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+        $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+    });
+</script>
+@endpush
 @endsection

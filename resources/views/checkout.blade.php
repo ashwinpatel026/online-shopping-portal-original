@@ -1,32 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>Checkout</h2>
-
-        <form action="{{ route('checkout.placeOrder') }}" method="POST">
-            @csrf
-
-            <div class="form-group">
-                <label for="address">Shipping Address</label>
-                <textarea class="form-control" name="address" required>{{ $user->address ?? '' }}</textarea>
+<div class="container">
+    <div class="checkout-box faq-page inner-bottom-sm">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Choose Payment Method</h2>
+                <div class="panel-group checkout-steps" id="accordion">
+                    <!-- checkout-step-01  -->
+                    <div class="panel panel-default checkout-step-01">
+                        <!-- panel-heading -->
+                        <div class="panel-heading">
+                            <h4 class="unicase-checkout-title">
+                                <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapseOne">
+                                    Select your Payment Method
+                                </a>
+                            </h4>
+                        </div>
+                        <!-- panel-heading -->
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <!-- panel-body  -->
+                            <div class="panel-body">
+                                <form action="{{ route('checkout.placeOrder') }}" name="payment" method="POST">
+                                    @csrf
+                                    <input type="radio" name="payment_method" value="COD" checked="checked"> COD
+                                    <input type="radio" name="payment_method" value="Internet Banking"> Internet Banking
+                                    <input type="radio" name="payment_method" value="Debit / Credit card"> Debit / Credit
+                                    card <br /><br />
+                                    <button class="btn btn-success mt-3" type="submit">Place Order</button>
+                                </form>
+                            </div>
+                            <!-- panel-body  -->
+                        </div><!-- row -->
+                    </div>
+                    <!-- checkout-step-01  -->
+                </div><!-- /.checkout-steps -->
             </div>
-
-            <h4>Payment Method</h4>
-            <div class="form-check">
-                <input class="form-check-input" name="payment_method" type="radio" value="COD" checked>
-                <label class="form-check-label">Cash on Delivery (COD)</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" name="payment_method" type="radio" value="Internet Banking">
-                <label class="form-check-label">Internet Banking</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" name="payment_method" type="radio" value="Debit/Credit Card">
-                <label class="form-check-label">Debit / Credit Card</label>
-            </div>
-
-            <button class="btn btn-success mt-3" type="submit">Place Order</button>
-        </form>
+        </div><!-- /.row -->
     </div>
+</div>
 @endsection

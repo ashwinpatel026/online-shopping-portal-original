@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/category/{categoryId}', [CategoryFrontController::class, 'show'])->name('category.show');
 Route::get('/product-details/{id}', [ProductDetailsController::class, 'show'])->name('product.show');
+Route::put('/cart/update-billing/{id}',[CartController::class, 'update_billing'])->name('cart.update.billing');
+Route::put('/cart/update-shipping/{id}',[CartController::class, 'update_shipping'])->name('cart.update.shipping');
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -31,6 +33,7 @@ Route::delete('/cart/remove/{rowId}', [CartController::class, 'remove_from_cart'
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user-orders', [UserController::class, 'orders'])->name('user.orders');
 
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::post('/checkout/place-order', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');

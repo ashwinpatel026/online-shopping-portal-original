@@ -6,10 +6,8 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
-                    <li><a href="index.php">Home</a></li>
-                    <li>Electronics</li>
-                    <li>Mobiles</li>
-                    <li class="active">Apple iPhone 6 (Silver, 16 GB)</li>
+                    <li><a href="{{route('home.index')}}">Home</a></li>
+                    <li class="active">Product Details</li>
                 </ul>
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
@@ -201,7 +199,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-7">
-                                        @if ($product->product_availability === 'in-stock')
+                                        @if ($product->product_availability === 'In Stock')
                                             <div class="action">
                                                 <form action="{{ route('cart.add') }}" method="POST">
                                                     @csrf
@@ -366,7 +364,7 @@
                                         <div class="image">
                                             <a href="{{ route('product.show', $relatedProduct->id) }}">
                                                 <img data-echo="{{ asset('products/' . $relatedProduct->product_image1) }}"
-                                                    src="assets/images/blank.gif" alt="" width="150"
+                                                    src="{{asset('assets/images/blank.gif')}}" alt="" width="150"
                                                     height="240">
                                             </a>
                                         </div><!-- /.image -->
@@ -388,12 +386,13 @@
                                     </div><!-- /.product-info -->
                                 </div>
                             </div>
+                        </div>
                     @endforeach
                 @endif
             </div>
         </section>
     </div>
-
+    <div class="clearfix"></div>
 @endsection
 
 @push('scripts')

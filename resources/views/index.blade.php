@@ -166,39 +166,6 @@
                                     <!-- end product -->
                                 </div><!-- /.item -->
                                 @endforeach
-                                    {{-- <div class="item">
-                                        <!-- start product -->
-                                        <div class="products">
-                                            <div class="product">
-                                                <div class="product-image">
-                                                    <div class="image">
-                                                        <a href="product-details.php?pid=1">
-                                                            <img data-echo="path/to/product-image.jpg"
-                                                                src="path/to/product-image.jpg" alt="Product Name"
-                                                                width="180" height="300">
-                                                        </a>
-                                                    </div><!-- /.image -->
-                                                </div><!-- /.product-image -->
-                                                <div class="product-info text-left">
-                                                    <h3 class="name">
-                                                        <a href="product-details?pid=1">Product Name</a>
-                                                    </h3>
-                                                    <div class="rating rateit-small"></div>
-                                                    <div class="description"></div>
-                                                    <div class="product-price">
-                                                        <span class="price">₹999.99</span>
-                                                        <span class="price-before-discount">₹1,299.99</span>
-                                                    </div><!-- /.product-price -->
-                                                </div><!-- /.product-info -->
-                                                <div class="action">
-                                                    <a class="lnk btn btn-info"
-                                                        href="index?page=product&action=add&id=1">Add to Cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end product -->
-                                    </div><!-- /.item --> --}}
-
                                 </div><!-- /.home-owl-carousel -->
                             </div><!-- /.product-slider -->
                         </div>

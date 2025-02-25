@@ -22,4 +22,26 @@ class CheckoutController extends Controller
 
         return view('checkout', compact('user', 'cartItems'));
     }
+
+    public function placeOrder(Request $request)
+    {
+        $request->validate([
+            'payment_method' => 'required',
+        ]);
+        $items = Cart::instance('cart')->content();
+        foreach ($items as $item) {
+            $order = new Order();
+            $order->user_id = Auth::id();
+            $order->payment_method = $request->payment_method;
+            $order->product_id = $item->id;
+            $order->quantity = $item->qty;
+            $order->order_status = 'Order Placed';
+            $order->save();
+        }
+        // Clear Cart After Order
+        Cart::destroy();
+
+        return redirect()->route('user.orders')->with('success', 'Order placed successfully!');
+    }
+    
 }
