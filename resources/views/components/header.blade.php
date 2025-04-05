@@ -6,9 +6,9 @@
                 <div class="cnt-account">
                     <ul class="list-unstyled">
 
-                        <li> <a href="{{route('user.index')}}"><i class="icon fa fa-user"></i>My Account</a></li>
+                        <li> <a href="{{ route('user.index') }}"><i class="icon fa fa-user"></i>My Account</a></li>
                         <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                        <li><a href="{{route('cart.index')}}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+                        <li><a href="{{ route('cart.index') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
                         @guest
                             <li><a href="{{ route('login') }}"><i class="icon fa fa-sign-in"></i>Login</a></li>
                         @endguest
@@ -28,7 +28,8 @@
                 <div class="cnt-block">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small">
-                            <a class="dropdown-toggle" href="{{route('user.orders')}}"><span class="key">Track Order</b></a>
+                            <a class="dropdown-toggle" href="{{ route('user.orders') }}"><span class="key">Track
+                                    Order</b></a>
                         </li>
                     </ul>
                 </div>
@@ -64,20 +65,21 @@
                 <div class="col-xs-12 col-sm-12 col-md-3 animate-dropdown top-cart-row">
                     <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
                     <div class="dropdown-cart">
-                        <a href="{{route('cart.index')}}" class="lnk-cart">
+                        <a class="lnk-cart" href="{{ route('cart.index') }}">
                             <div class="items-cart-inner">
                                 <div class="total-price-basket">
                                     <span class="lbl">cart -</span>
                                     <span class="total-price">
                                         <span class="sign">Rs.</span>
-                                        <span class="value">{{Cart::instance('cart')->subtotal() }}</span>
+                                        <span class="value">{{ Cart::instance('cart')->subtotal() }}</span>
                                     </span>
                                 </div>
                                 <div class="basket">
                                     <i class="glyphicon glyphicon-shopping-cart"></i>
                                 </div>
-                                @if(Cart::instance('cart')->count() > 0) 
-                                    <div class="basket-item-count"><span class="count">{{Cart::instance('cart')->count()}}</span></div>
+                                @if (Cart::instance('cart')->count() > 0)
+                                    <div class="basket-item-count"><span
+                                            class="count">{{ Cart::instance('cart')->count() }}</span></div>
                                 @else
                                     <div class="basket-item-count"><span class="count">0</span></div>
                                 @endif
@@ -113,17 +115,18 @@
                                         href="{{ route('home.index') }}">Home</a>
 
                                 </li>
-                                @if($categories)
-                                    @foreach($categories as $category) 
+                                @if ($categories)
+                                    @foreach ($categories as $category)
                                         <li class="dropdown yamm">
-                                            <a href="{{ route('category.show', ['categoryId' => $category->id]) }}"> {{ $category->category_name }}</a>
-        
+                                            <a href="{{ route('category.show', ['categoryId' => $category->id]) }}">
+                                                {{ $category->category_name }}</a>
+
                                         </li>
                                     @endforeach
                                 @endif
-                                        
-                                {{-- @if($categories)
-                                    @foreach($categories as $category) 
+
+                                {{-- @if ($categories)
+                                    @foreach ($categories as $category) 
                                         <li class="dropdown yamm">
                                             <a href="{{ route('category.show', ['categoryId' => $category->id]) }}"> {{ $category->cateogry_name }}</a>
         
@@ -137,7 +140,8 @@
                                         <a href="{{ Auth::user()->utype === 'ADM' ? route('admin.index') : route('user.index') }}"
                                             style="color:#000"> Dashboard</a>
                                     @else
-                                        <a href="{{ route('admin.login') }}" target="_blank" style="color:#000"> Admin Login</a>
+                                        <a href="{{ route('admin.login') }}" style="color:#000" target="_blank"> Admin
+                                            Login</a>
                                     @endauth
 
                                 </li>
